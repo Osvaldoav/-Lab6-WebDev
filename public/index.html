@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+      Blog
+    </title>
+    <link href="./css/index.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <h1>
+      My Blog
+    </h1>
+    <div class="forms">
+      
+      <form id="addComment">
+        <h4>Agregar comentario</h4>
+        <div class="formRow">
+          <label>Titulo: </label>
+          <input type="text" placeholder="Titulo" id="titulo">
+        </div>
+        <div class="formRow">
+          <label>Autor: </label>
+          <input type="text" placeholder="Autor" id="autor">
+        </div>
+        <textarea form="addComment" placeholder="Comment"></textarea>
+        <input type="submit">
+      </form>
+
+      <form id="modifyComment">
+        <h4>Modificar comentario</h4>
+        <div class="formRow">
+            <label>ID: </label>
+            <input type="text" placeholder="ac077929-7449-4239" id="id">
+          </div>
+        <div class="formRow">
+          <label>Titulo: </label>
+          <input type="text" placeholder="Titulo" id="titulo">
+        </div>
+        <div class="formRow">
+          <label>Autor: </label>
+          <input type="text" placeholder="Autor" id="autor">
+        </div>
+        <textarea form="modifyComment" placeholder="Comment"></textarea>
+        <input type="submit">
+      </form>
+
+      <form id="deleteComment">
+        <h4>Borrar comentario</h4>
+        <div class="formRow">
+          <label>ID: </label>
+          <input type="text" placeholder="ac077929-7449-4239" id="id">
+        </div>
+        <input type="submit">
+      </form>
+
+      <form id="searchComment">
+        <h4>Buscar comentario</h4>
+        <div class="formRow">
+          <label>Autor: </label>
+          <input type="text" placeholder="Autor" id="autor">
+        </div>
+        <input type="submit">
+      </form>
+    </div>
+    
+    <div class="container">
+      <div class="ulContainer">
+        <h3>All comments</h3>
+        <ul id="allCommentsList">
+        </ul>
+      </div>
+      <div class="ulContainer">
+        <h3>Comments by autor</h3>
+        <ul id="autorCommentsList">
+        </ul>
+      </div>
+    </div>
+    
+  </body>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="./js/index.js"></script> 
+</html>
