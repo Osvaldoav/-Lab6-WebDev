@@ -12,22 +12,22 @@ app.use(morgan('dev'));
 let comments = [
   {
     id: uuidv4(),
-    titulo: 'Titulo',
-    contenido: 'Este es un comentario',
+    titulo: 'Pongame 100',
+    contenido: 'Este es un comentario de prueba.',
     autor: 'Osvaldo Alvarez',
     date: new Date()
   },
   {
     id: uuidv4(),
     titulo: 'Pongale 100 profe',
-    contenido: 'Esta aplicacion merece sacar 100 en el lab',
+    contenido: 'Esta aplicacion merece sacar 100 en el lab.',
     autor: 'Mariano Uvalle',
     date: new Date()
   },
   {
     id: uuidv4(),
-    titulo: 'Segundo titulo',
-    contenido: 'Este es mi segundo comentario',
+    titulo: 'Que buen laboratorio',
+    contenido: 'El laboratorio esta bien hecho.',
     autor: 'Osvaldo Alvarez',
     date: new Date()
   },
@@ -41,7 +41,7 @@ app.get('/blog-api/comentarios-por-autor', (req, res) => {
   const {autor} = req.query;
 
   if(!autor){
-    res.statusMessage = 'You must provide an author';
+    res.statusMessage = 'Autor no valido.';
     return res.status(406).send();
   }
 
@@ -54,7 +54,7 @@ app.get('/blog-api/comentarios-por-autor', (req, res) => {
     return res.status(201).json(commentsFound);
   }
   else{
-    res.statusMessage = 'Autor has not comments yet';
+    res.statusMessage = 'No se ha encontrado ningun comentario con ese autor.';
     return res.status(404).send();
   }
 });
@@ -64,7 +64,7 @@ app.post('/blog-api/nuevo-comentario', jsonParser, (req, res) => {
   console.log(req.body);
 
   if(!(titulo && contenido && autor)){
-    res.statusMessage = 'You must provide titulo, contenido and autor';
+    res.statusMessage = 'Tienes que proveer al menos uno de los siguientes: titulo, contenido, autor.';
     return res.status(406).send();
   }
   
@@ -86,7 +86,7 @@ app.delete('/blog-api/remover-comentario/:id', jsonParser, (req, res) => {
     return res.status(200).json({});
   }
   else{
-    res.statusMessage = 'Comment with such id was not found';
+    res.statusMessage = 'No se ha encontrado ningun comentario con ese ID.';
     return res.status(404).send();
   }
 });
@@ -95,17 +95,17 @@ app.put('/blog-api/actualizar-comentario/:id', jsonParser, (req, res) => {
   const {id, titulo, contenido, autor} = req.body;
 
   if(!id){
-    res.statusMessage = 'You must provide an id within the body';
+    res.statusMessage = 'ID no valido.';
     return res.status(406).send();
   }
 
   if(id != req.params.id){
-    res.statusMessage = 'Both Ids must coincide (body & params)';
+    res.statusMessage = 'No coincide la ID de los parametros con la del contenido.';
     return res.status(409).send();
   }
 
   if(!(titulo || contenido || autor)){
-    res.statusMessage = 'You must provide at least titulo, contenido or autor';
+    res.statusMessage = 'Tienes que proveer al menos uno de los siguientes: titulo, contenido, autor.';
     return res.status(406).send();
   }
 
@@ -116,7 +116,7 @@ app.put('/blog-api/actualizar-comentario/:id', jsonParser, (req, res) => {
   });
 
   if(index < 0){
-    res.statusMessage = 'Comment with such id was not found';
+    res.statusMessage = 'No se encontro ningun comentario con ese ID.';
     return res.status(404).send();
   }
   else{
